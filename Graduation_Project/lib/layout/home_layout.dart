@@ -25,26 +25,26 @@ class _HomeLayoutState extends State<HomeLayout> {
     List<Widget> _buildScreens() {
       return [
         order_screen(),
-        trip_screen(),
+         trip_screen(),
         profile_screen(),
       ];
     }
     List<PersistentBottomNavBarItem> _navBarsItems() {
       return [
         PersistentBottomNavBarItem(
-          icon: const Icon(Icons.offline_pin),
+          icon: const Icon(Icons.offline_pin_outlined),
           title: ("Order"),
           activeColorPrimary: AppColor.basecolor,
           inactiveColorPrimary: Colors.grey,
         ),
         PersistentBottomNavBarItem(
-          icon: const Icon(Icons.airplanemode_active_outlined),
+          icon: const Icon(Icons.time_to_leave_outlined),
           title: ("Trip"),
           activeColorPrimary: AppColor.basecolor,
           inactiveColorPrimary: Colors.grey,
         ),
         PersistentBottomNavBarItem(
-          icon: const Icon(Icons.person),
+          icon: const Icon(Icons.person_outline),
           title: ("Profile"),
           activeColorPrimary: AppColor.basecolor,
           inactiveColorPrimary: Colors.grey,
@@ -58,6 +58,7 @@ class _HomeLayoutState extends State<HomeLayout> {
           body: PersistentTabView(
             context,
             controller: _controller,
+            popAllScreensOnTapAnyTabs:true ,
             screens: _buildScreens(),
             items: _navBarsItems(),
             confineInSafeArea: true,

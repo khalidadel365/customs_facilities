@@ -7,16 +7,19 @@ class InitialState extends UserRegisterStates{}
   class UserRegisterState extends UserRegisterStates{}
 class UserRegisterSuccessState extends UserRegisterStates{}
 class UserRegisterErrorState extends UserRegisterStates{
-  late String error;
+   dynamic error;
   UserRegisterErrorState(this.error);
+
 }
 class UserRegisterLoadingState extends UserRegisterStates{}
 
 //*******************
 class UserCreateSuccessState extends UserRegisterStates{}
-class UserCreateErrorState extends UserRegisterStates{
-  String error;
-  UserCreateErrorState(this.error);
+class UserCreateFormSuccessState extends UserRegisterStates{}
+class UserCreateFormLoadingState extends UserRegisterStates{}
+class UserCreateFormErrorState extends UserRegisterStates{
+  dynamic error;
+  UserCreateFormErrorState(this.error);
 }
 
 

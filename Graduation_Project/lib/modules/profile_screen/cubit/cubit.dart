@@ -14,10 +14,10 @@ import '../../../models/user_model.dart';
 
 class ProfileCubit extends Cubit<ProfileStates>{
   ProfileCubit() :super (ProfileInitialState());
-  UserModel? model;
+  userModel? model;
   static ProfileCubit get(context)=>BlocProvider.of(context);
 
-  void getUserData (){
+ /* void getUserData (){
     emit(GetUserLoadingState());
     FirebaseFirestore.instance.collection('users').doc(uid).get()
         .then((value) {
@@ -28,6 +28,5 @@ class ProfileCubit extends Cubit<ProfileStates>{
       emit(GetUserSuccessState());
     }).catchError((onError){
       emit(GetUserErrorState(onError.toString()));
-    });
+    });*/
   }
-}

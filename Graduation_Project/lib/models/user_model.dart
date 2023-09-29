@@ -1,5 +1,5 @@
 
-class UserModel {
+class userModel {
   String? name;
   String? email;
   String? uid;
@@ -8,12 +8,15 @@ class UserModel {
   String? phone_number;
   String? country_of_residence;
   String? gender;
-  UserModel({ this.name,this.email, this.uid,this.national_id,this.nationality,this.phone_number,this.country_of_residence,this.gender});
+  userModel({ this.name,this.email, this.uid,this.national_id,this.nationality,this.phone_number,this.country_of_residence,this.gender});
 // هحول الmap ل data
-  fromJson(Map<String,dynamic>? json){
+  userModel.fromJson(Map<String,dynamic>? json){
     email=json!['email'];
-    name=json!['name'];
-    uid=json!['uid'];
+    print(email);
+    name=json['name'];
+    print(name);
+    uid=json['uid'];
+    print(uid);
   }
   // هحول الdata ل map
  Map<String,dynamic> toMap() {

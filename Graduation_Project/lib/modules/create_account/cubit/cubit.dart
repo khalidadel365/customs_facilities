@@ -19,6 +19,7 @@ void userRegisterWithEmail({required String name, required String email, require
   FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: email,
       password: password,).then((value){
+    uid = value.user?.uid;
     print(value.user?.email);
     print(value.user?.uid);
     userCreateWithNameAndEmail(name: name, email: value.user?.email, uid: value.user?.uid);
@@ -28,38 +29,34 @@ void userRegisterWithEmail({required String name, required String email, require
 }
 
   userCreateWithNameAndEmail({String? name, String? email, String? uid}){
-  UserModel model = UserModel(name: name,email:email,uid: uid);
+  userModel model = userModel(name: name,email:email,uid: uid);
 FirebaseFirestore.instance.collection('users')
     .doc(uid)
     .set(model.toMap()).then((value) {
       emit(UserCreateSuccessState());
       print(uid);
     }
-).catchError((error){
-  emit(UserCreateErrorState(error));
-  });
+);
 }
 
-  userCreateWithNationalityandNationalId({
+  userCreateForm({ // with nationality and nationalId
     String? nationalId,
     String? gender,
     String? nationality,
     String? phone_number,
     String? county}) {
-    UserModel modell = UserModel(
+    userModel modell = userModel(
         national_id: nationalId ,
         gender: gender ,
         nationality: nationality ,
         phone_number: phone_number ,
         country_of_residence: county ,
-
     );
+    emit(UserCreateFormLoadingState());
     FirebaseFirestore.instance.collection('users')
-        .doc(uid).collection('form').add(modell.resToMap());
-      emit(UserCreateSuccessState());
-      print(uid);
+        .doc(uid).collection('form').add(modell.resToMap()).catchError((error){
+          emit(UserCreateFormErrorState(error));
+    });
+      emit(UserCreateFormSuccessState());
   }
-
-
-
 }

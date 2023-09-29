@@ -12,6 +12,8 @@ var loginEmailController =TextEditingController();
 var loginPasswordController=TextEditingController();
 bool email_validate =false;
 bool pass_validate =false;
+//***************************************************************************
+IconData fabIcon = Icons.chat_bubble_outlined;
 class login_screen extends StatefulWidget{
   @override
   State<login_screen> createState() => _login_screenState();
@@ -25,7 +27,15 @@ class _login_screenState extends State<login_screen> {
      child: BlocConsumer<LoginAccountCubit,LoginAccountStates>(
        listener: (context,state){
          if(state is LoginAccountErrorState){
-           Fluttertoast.showToast(msg: 'Email or Password not correct');
+           Fluttertoast.showToast(
+               msg: "Email or Password may not be correct",
+               toastLength: Toast.LENGTH_SHORT,
+               gravity: ToastGravity.BOTTOM,
+               timeInSecForIosWeb: 1,
+               backgroundColor: Colors.red,
+               textColor: Colors.white,
+               fontSize: 15.0
+           );
          }
          if (state is LoginAccountSuccessState) {
            Navigator.push(
@@ -47,12 +57,9 @@ class _login_screenState extends State<login_screen> {
                child: Column(
                  crossAxisAlignment: CrossAxisAlignment.start,
                  children:  [
-                   const Text(
+                    Text(
                      'Login Your Account',
-                     style: TextStyle(
-                       fontWeight: FontWeight.bold,
-                       fontSize:30.0,
-                     ),
+                     style: Theme.of(context).textTheme.bodyText1,
                    ),
                    SizedBox(
                      height: 35,
@@ -84,11 +91,9 @@ class _login_screenState extends State<login_screen> {
                    ),
                    TextButton(
                      onPressed: (){},
-                     child:const Text(
+                     child: Text(
                        'Forgot Password',
-                       style: TextStyle(
-                         color: Colors.grey,
-                       ),
+                         style: Theme.of(context).textTheme.bodyText2
                      ),
                    ),
                    SizedBox(
@@ -110,7 +115,7 @@ class _login_screenState extends State<login_screen> {
                                }
                              }
                              );
-                           }
+                           },
                        ),
                        fallback: (context)=>const Center(
                  child:  CircularProgressIndicator(),

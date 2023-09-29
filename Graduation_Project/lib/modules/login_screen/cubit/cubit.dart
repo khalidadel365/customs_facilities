@@ -14,10 +14,7 @@ class LoginAccountCubit extends Cubit<LoginAccountStates>{
 
   static LoginAccountCubit get(context)=>BlocProvider.of(context);
 
-    void LoginAccount ({
-      required String email,
-      required String password,
-    }){
+    void LoginAccount ({required String email, required String password,}){
       emit(LoginAccountLoadingState());
       FirebaseAuth.instance.signInWithEmailAndPassword(
           email: email,
@@ -30,4 +27,10 @@ class LoginAccountCubit extends Cubit<LoginAccountStates>{
                 emit(LoginAccountErrorState());
       });
     }
+
+  changeFloatingButtonState({
+  required
+  }){
+
+  }
   }

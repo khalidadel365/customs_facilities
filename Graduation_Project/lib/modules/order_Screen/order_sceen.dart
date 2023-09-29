@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:graduation_project/modules/cardata_screen/cardata_screen.dart';
 import 'package:graduation_project/modules/login_screen/login_screen.dart';
 import 'package:graduation_project/shared/component/components.dart';
@@ -48,7 +49,7 @@ class _order_screenState extends State<order_screen> {
                 'Residence Data',
               ),
               centerTitle: true,
-              titleTextStyle: const TextStyle(
+              titleTextStyle: GoogleFonts.openSans(
                 fontSize: 25,
               ),
               backgroundColor: AppColor.basecolor,
@@ -121,6 +122,10 @@ class _order_screenState extends State<order_screen> {
                     DropdownButtonFormField(
                       decoration: InputDecoration(
                         labelText: "Gender",
+                        labelStyle: GoogleFonts.openSans(
+                          fontSize: 15,
+                          color: Colors.black
+                        ),
                       ),
                       icon: Icon(
                         Icons.arrow_drop_down,
@@ -144,10 +149,9 @@ class _order_screenState extends State<order_screen> {
                         height: 12),
                     Row(
                       children:  [
-                        const Text(
-                          'Residency photo :',style: TextStyle(
-                          fontSize: 16,
-                        ),
+                         Text(
+                          'Residency photo :',
+                            style: Theme.of(context).textTheme.bodyText2,
                         ),
                         SizedBox(
                           width: 10,
@@ -161,10 +165,9 @@ class _order_screenState extends State<order_screen> {
                               _image=File(residencyImage!.path);
                             });
                           },
-                            child: const Text(
-                              'Upload the photo',style: TextStyle(
-                                fontWeight: FontWeight.w500
-                            ),
+                            child:  Text(
+                              'Upload the photo',
+                                style: Theme.of(context).textTheme.bodyText2
                             ),
                           ),
                         ),
@@ -175,10 +178,9 @@ class _order_screenState extends State<order_screen> {
                     ),
                     Row(
                       children:  [
-                        const Text(
-                          'Passport photo :',style: TextStyle(
-                          fontSize: 16,
-                        ),
+                         Text(
+                          'Passport photo :',
+                            style: Theme.of(context).textTheme.bodyText2
                         ),
                         SizedBox(
                           width: 10,
@@ -192,10 +194,8 @@ class _order_screenState extends State<order_screen> {
                               _image=File(passportImage!.path);
                             });
                           },
-                            child: const Text(
-                              'Upload the photo',style: TextStyle(
-                                fontWeight: FontWeight.w500
-                            ),
+                            child:  Text(
+                              'Upload the photo',style: Theme.of(context).textTheme.bodyText2
                             ),
                           ),
                         ),
@@ -209,7 +209,7 @@ class _order_screenState extends State<order_screen> {
                         text: 'Next',
                         color: AppColor.basecolor,
                         onPressed: (){
-                        UserRegisterCubit.get(context).userCreateWithNationalityandNationalId(
+                        UserRegisterCubit.get(context).userCreateForm(
                           nationalId: nationalId_controller.text,
                           nationality: nationality_controller.text,
                           county: country_controller.text,
